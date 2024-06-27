@@ -27,7 +27,7 @@ information about incoming requests and forwards this information via RabbitMQ.
     - On Request saves in Cache the latest ratesavailable for choosen currency within 24h period.
     - It uses that cached value for future requests.
     - Caches are getting deleted when new data its synchronized from Fixer.
-
+      
 ### JSON API
 
 - Supports two endpoints that accept the following POST requests:
@@ -139,6 +139,8 @@ docker run -d --name gateway-rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3-man
 ```
 API_KEY=(Your API key for fixer.io) ;EXCHANGE=gateway (or whatever exchange you have)
 ```
+
+### The Project will initially generate some data automatically with the DataLoader, so if you want just to test it without calling the external api just comment out the @Scheduled annotation in RatesDataLoaderService.
 
 ### Verify Messages in RabbitMQ
 - Access the RabbitMQ management interface:
