@@ -104,7 +104,7 @@ in a relational database for incoming requests from EXT_SERVICE_1 and EXT_SERVIC
 - Forwards unified information about incoming requests through a web socket (RabbitMQ).
 - The exchange name is predefined in the configuration.
 
-### Getting Started
+## Getting Started
 
 #### Clone the Repository
 ```shell
