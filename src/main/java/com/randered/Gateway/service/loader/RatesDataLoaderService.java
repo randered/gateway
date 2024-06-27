@@ -4,8 +4,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.randered.Gateway.entity.Rate;
 import com.randered.Gateway.exception.ApiRequestException;
-import com.randered.Gateway.service.core.RatesService;
 import com.randered.Gateway.service.cache.CacheCleanerService;
+import com.randered.Gateway.service.core.RatesService;
 import com.randered.Gateway.service.core.impl.RatesServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.retry.annotation.Backoff;
 import org.springframework.retry.annotation.Retryable;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -38,7 +39,7 @@ public class RatesDataLoaderService {
     @Value("${fixer.api.url}")
     private String apiUrl;
 
-//    @Scheduled(fixedRate = 3600000)
+    @Scheduled(cron = "${app.cron.expression}")
     @Retryable(
             retryFor = {ApiRequestException.class},
             maxAttempts = 5,
