@@ -25,14 +25,12 @@ import java.util.Map;
 
 @Service
 public class RatesDataLoaderService {
-
     private static final Logger logger = LoggerFactory.getLogger(RatesServiceImpl.class);
 
     @Autowired
     private RatesService ratesService;
     @Autowired
     private RestTemplate restTemplate;
-
     @Autowired
     private CacheCleanerService cleaner;
 
