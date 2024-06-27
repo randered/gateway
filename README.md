@@ -23,8 +23,9 @@ information about incoming requests and forwards this information via RabbitMQ.
 
 2. **Public REST APIs**:
     - Provides two public REST APIs for external services with JSON and XML content types.
-    - On Request saves in Cache the latest rate from the Database.
-    - On Request saves in Cache the latest rates within 24h period.
+    - On Request saves in Cache the latest rate available for choosen currency from the Database.
+    - On Request saves in Cache the latest ratesavailable for choosen currency within 24h period.
+    - It uses that cached value for future requests.
     - Caches are getting deleted when new data its synchronized from Fixer.
 
 ### JSON API
