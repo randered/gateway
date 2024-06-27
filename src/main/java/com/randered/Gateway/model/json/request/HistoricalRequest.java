@@ -11,6 +11,6 @@ import lombok.Setter;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class JsonHistoricalRequest extends BaseJsonRequest {
+public class HistoricalRequest extends BaseRequest {
     private Integer period;
 }

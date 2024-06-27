@@ -1,8 +1,8 @@
-package com.randered.Gateway.service.impl;
+package com.randered.Gateway.service.core.impl;
 
 import com.randered.Gateway.entity.Rate;
 import com.randered.Gateway.repository.RatesRepository;
-import com.randered.Gateway.service.RatesService;
+import com.randered.Gateway.service.core.RatesService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -7,5 +7,5 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
-public class JsonCurrentRequest extends BaseJsonRequest{
+public class CurrentRequest extends BaseRequest {
 }
