@@ -1,4 +1,4 @@
-package com.randered.Gateway.service;
+package com.randered.Gateway.service.core;
 
 import com.randered.Gateway.entity.Rate;
 

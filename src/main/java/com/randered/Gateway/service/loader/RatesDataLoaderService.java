@@ -1,12 +1,12 @@
-package com.randered.Gateway.service.data;
+package com.randered.Gateway.service.loader;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.randered.Gateway.entity.Rate;
 import com.randered.Gateway.exception.ApiRequestException;
-import com.randered.Gateway.service.RatesService;
 import com.randered.Gateway.service.cache.CacheCleanerService;
-import com.randered.Gateway.service.impl.RatesServiceImpl;
+import com.randered.Gateway.service.core.RatesService;
+import com.randered.Gateway.service.core.impl.RatesServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,22 +24,20 @@ import java.time.ZoneOffset;
 import java.util.Map;
 
 @Service
-public class RatesDataFetcherService {
-
+public class RatesDataLoaderService {
     private static final Logger logger = LoggerFactory.getLogger(RatesServiceImpl.class);
 
     @Autowired
     private RatesService ratesService;
     @Autowired
     private RestTemplate restTemplate;
-
     @Autowired
     private CacheCleanerService cleaner;
 
     @Value("${fixer.api.url}")
     private String apiUrl;
 
-    @Scheduled(fixedRate = 3600000)
+    @Scheduled(cron = "${app.cron.expression}")
     @Retryable(
             retryFor = {ApiRequestException.class},
             maxAttempts = 5,

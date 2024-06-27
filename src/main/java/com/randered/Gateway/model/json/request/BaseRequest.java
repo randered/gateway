@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public abstract class BaseJsonRequest {
+public abstract class BaseRequest {
     private String requestId;
     private Long timestamp;
     private String client;
